@@ -12,10 +12,11 @@ private:
 				if (numbers[j] > numbers[j + 1])
 					std::swap(numbers[j], numbers[j + 1]);
 
-				checkStatus();
+				if (!checkStatus())
+					return;
 			}
 		}
-		isFinished = true;
+		m_finished = true;
 }
 };
 

@@ -25,17 +25,19 @@ class MyApp : public App {
                 std::cout << (*numbers)[i] << " ";
             std::cout << std::endl;
         } ImGui::SameLine();
-        if (ImGui::Button("Sort"))
+        if (ImGui::Button("Start"))
             Manager.startSort(); 
+        ImGui::SameLine();
+        if (ImGui::Button("Stop"))
+            Manager.stopSort();
         ImGui::SameLine();
         if (ImGui::Button("Shuffle"))
             Manager.doShuffle();
 
-        ImPlot::ShowDemoWindow();
+        //ImPlot::ShowDemoWindow();
 	}
 
 private:
-    //int data[4] = { 0,1 ,2, 3 };
     const std::vector<unsigned>* numbers = nullptr;
     MyManager Manager;
 };
