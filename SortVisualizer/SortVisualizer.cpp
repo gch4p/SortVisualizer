@@ -15,6 +15,7 @@ class MyApp : public App {
         ImPlot::BeginPlot("Bar Plot");
         //ImPlot::PlotBars("Vertical", data, 4);
         ImPlot::PlotBars("Vertical", numbers->data(), Manager.length);
+        ImPlot::PlotBars("Cursor", Manager.cursor->pos, Manager.cursor->val, 1.0);
         ImPlot::EndPlot();
 
         if (ImGui::Button("Show Length")) {

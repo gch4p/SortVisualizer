@@ -10,21 +10,20 @@ public:
 	MyManager() {
 		Sorter = new BubbleSort;
 		Sorter->init();
-		//numbers = getData();
 	}
 	~MyManager() = default; 
 
 	void startSort() {
-		Sorter->sort();
+		Sorter->start();
 	}
 
 	std::vector<unsigned>* getData() {
 		return Sorter->getNumbers();
 	}
 
-	int& getLength() {
-		return length;
-	}
+	//int& getLength() {
+	//	return length;
+	//}
 
 	void doShuffle() {
 		Sorter->shuffle();
@@ -35,6 +34,7 @@ public:
 	}
 
 	int length = 100;
+	const cursorStats cursor = cursorStats();
 private:
 	int delay = 10; //ms
 	bool m_paused = 0;
