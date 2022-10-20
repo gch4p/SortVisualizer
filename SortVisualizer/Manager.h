@@ -9,8 +9,9 @@
 class MyManager {
 public:
 	MyManager() {
-		Sorter = new InsertionSort;
+		Sorter = new BubbleSort;
 		Sorter->init();
+		Sorter->shuffle();
 	}
 	~MyManager() = default; 
 
@@ -34,8 +35,25 @@ public:
 		Sorter->stop();
 	}
 
+	void setSort(int id) {
+		m_paused = 1;
+		sortID = id;
+		Sorter->stop();
+		switch (id) {
+		case 0:
+			Sorter = new BubbleSort;
+			break;
+		case 1:
+			Sorter = new InsertionSort;
+			break;
+		}
+		Sorter->init();
+		Sorter->shuffle();
+	}
+
 	SortAlgorithm* Sorter = nullptr;
 	int length = 100;
+	int sortID = 0;
 private:
 	int delay = 10; //ms
 	bool m_paused = 0;

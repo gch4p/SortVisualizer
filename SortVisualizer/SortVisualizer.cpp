@@ -5,7 +5,7 @@
 class MyApp : public App {
 
     void startup() override {
-        //data = Manager.getData();
+        //startup
     }
 
 	void update() override {
@@ -13,20 +13,25 @@ class MyApp : public App {
         numbers = Manager.Sorter->getNumbers();
         cursorPos = *Manager.Sorter->getCursorPos();
         cursorVal = (*numbers)[cursorPos];
-       
-        ImPlot::BeginPlot("Bar Plot");
-        ImPlot::PlotBars("Vertical", numbers->data(), Manager.length);
-        ImPlot::PlotBars("Cursor", &cursorPos, &cursorVal, 1, 1.0);
-        ImPlot::EndPlot();
+        
+        const char* sorts[] = { "Bubble Sort","Insertion Sort" };
+        ImGui::Combo("Sort", &currentSort, sorts, IM_ARRAYSIZE(sorts));
+        if (currentSort != Manager.sortID)
+            Manager.setSort(currentSort);
 
         if (ImGui::Button("Start"))
-            Manager.startSort(); 
+            Manager.startSort();
         ImGui::SameLine();
         if (ImGui::Button("Stop"))
             Manager.stopSort();
         ImGui::SameLine();
         if (ImGui::Button("Shuffle"))
             Manager.doShuffle();
+       
+        ImPlot::BeginPlot("Bar Plot");
+        ImPlot::PlotBars("Vertical", numbers->data(), Manager.length);
+        ImPlot::PlotBars("Cursor", &cursorPos, &cursorVal, 1, 1.0);
+        ImPlot::EndPlot();
 
 	}
 
@@ -35,6 +40,7 @@ private:
     MyManager Manager;
     unsigned cursorPos = 0;
     unsigned cursorVal = 0;
+    int currentSort = 0;
 
 };
 
