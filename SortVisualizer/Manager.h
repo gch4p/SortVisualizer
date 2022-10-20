@@ -2,18 +2,20 @@
 #define MANAGER
 
 #include "Algorithms/BubbleSort.h"
+#include "Algorithms/InsertionSort.h"
 #include <chrono>
 #include <thread>
 
 class MyManager {
 public:
 	MyManager() {
-		Sorter = new BubbleSort;
+		Sorter = new InsertionSort;
 		Sorter->init();
 	}
 	~MyManager() = default; 
 
 	void startSort() {
+		m_paused = 0;
 		Sorter->start();
 	}
 
@@ -22,11 +24,13 @@ public:
 	}
 
 	void doShuffle() {
+		m_paused = 1;
 		Sorter->stop();
 		Sorter->shuffle();
 	}
 
 	void stopSort() {
+		m_paused = 1;
 		Sorter->stop();
 	}
 
