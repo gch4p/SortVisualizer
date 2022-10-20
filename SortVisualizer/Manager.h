@@ -30,9 +30,8 @@ public:
 		Sorter->stop();
 	}
 
-	int length = 100;
-	//cursorStats cursor = cursorStats();
 	SortAlgorithm* Sorter = nullptr;
+	int length = 100;
 private:
 	int delay = 10; //ms
 	bool m_paused = 0;

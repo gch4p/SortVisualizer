@@ -10,25 +10,15 @@ class MyApp : public App {
 
 	void update() override {
 
-        //numbers = Manager.getData();
         numbers = Manager.Sorter->getNumbers();
         cursorPos = *Manager.Sorter->getCursorPos();
         cursorVal = (*numbers)[cursorPos];
        
         ImPlot::BeginPlot("Bar Plot");
-        //ImPlot::PlotBars("Vertical", data, 4);
         ImPlot::PlotBars("Vertical", numbers->data(), Manager.length);
         ImPlot::PlotBars("Cursor", &cursorPos, &cursorVal, 1, 1.0);
         ImPlot::EndPlot();
 
-        if (ImGui::Button("Show Length")) {
-            std::cout << Manager.length << std::endl;
-        } ImGui::SameLine();
-        if (ImGui::Button("Show Data")) {
-            for (int i = 0; i < Manager.length; ++i)
-                std::cout << (*numbers)[i] << " ";
-            std::cout << std::endl;
-        } ImGui::SameLine();
         if (ImGui::Button("Start"))
             Manager.startSort(); 
         ImGui::SameLine();
@@ -38,7 +28,6 @@ class MyApp : public App {
         if (ImGui::Button("Shuffle"))
             Manager.doShuffle();
 
-        //ImPlot::ShowDemoWindow();
 	}
 
 private:
