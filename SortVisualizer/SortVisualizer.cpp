@@ -10,12 +10,15 @@ class MyApp : public App {
 
 	void update() override {
 
-        numbers = Manager.getData();
+        //numbers = Manager.getData();
+        numbers = Manager.Sorter->getNumbers();
+        cursorPos = *Manager.Sorter->getCursorPos();
+        cursorVal = (*numbers)[cursorPos];
        
         ImPlot::BeginPlot("Bar Plot");
         //ImPlot::PlotBars("Vertical", data, 4);
         ImPlot::PlotBars("Vertical", numbers->data(), Manager.length);
-        ImPlot::PlotBars("Cursor", Manager.cursor->pos, Manager.cursor->val, 1.0);
+        ImPlot::PlotBars("Cursor", &cursorPos, &cursorVal, 1, 1.0);
         ImPlot::EndPlot();
 
         if (ImGui::Button("Show Length")) {
@@ -41,6 +44,9 @@ class MyApp : public App {
 private:
     const std::vector<unsigned>* numbers = nullptr;
     MyManager Manager;
+    unsigned cursorPos = 0;
+    unsigned cursorVal = 0;
+
 };
 
 int main(int argc, char* args[]) {

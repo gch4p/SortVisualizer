@@ -8,7 +8,7 @@ private:
 	void algo() override {
 		for (int i = 0; i < length - 1; i++) {
 			for (int j = 0; j < length - i - 1; j++) {
-				setCursorPos(j);
+				setCursorPos(j, 1);
 
 				if (numbers[j] > numbers[j + 1])
 					std::swap(numbers[j], numbers[j + 1]);

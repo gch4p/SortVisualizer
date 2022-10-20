@@ -21,11 +21,8 @@ public:
 		return Sorter->getNumbers();
 	}
 
-	//int& getLength() {
-	//	return length;
-	//}
-
 	void doShuffle() {
+		Sorter->stop();
 		Sorter->shuffle();
 	}
 
@@ -34,11 +31,11 @@ public:
 	}
 
 	int length = 100;
-	const cursorStats cursor = cursorStats();
+	//cursorStats cursor = cursorStats();
+	SortAlgorithm* Sorter = nullptr;
 private:
 	int delay = 10; //ms
 	bool m_paused = 0;
-	SortAlgorithm* Sorter = nullptr;
 	//std::vector<unsigned>* numbers = nullptr;
 };
 

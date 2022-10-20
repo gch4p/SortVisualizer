@@ -5,17 +5,19 @@
 #include <thread>
 #include <algorithm>
 #include <random>
+#include <atomic>
 
-struct cursorStats {
-	int pos = 0;
-	int val = 0;
-};
+//struct cursorStats {
+//	std::atomic<unsigned> pos = 0;
+//	unsigned val = 0;
+//};
 
 class SortAlgorithm {
 protected:
 	std::vector<unsigned> numbers = {};
 	unsigned length = 100;
-	bool m_finished, m_running = false;
+	std::atomic<bool> m_finished, m_running = false;
+	std::atomic<unsigned> cursorPos = 0;
 
 	std::thread sortThread;
 	int delay = 10; //ms
@@ -30,6 +32,14 @@ protected:
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(delay));
 		return 1;
+	}
+
+	void setCursorPos(int pos, int offset) {
+		if (pos - offset < 0)
+			offset = 0;
+		if (pos + offset > length)
+			offset = 0;
+		cursorPos = pos + offset;
 	}
 
 public:
@@ -71,12 +81,12 @@ public:
 		m_running = false;
 	}
 
-	void setCursorPos(int& pos) {
-		cursor.pos = pos;
-	}
+	//void setCursorPos(int& pos) {
+	//	cursor.pos = pos;
+	//}
 
-	cursorStats* getCursorStats() {
-		return &cursor;
+	std::atomic<unsigned>* getCursorPos() {
+		return &cursorPos;
 	}
 
 	std::vector<unsigned>* getNumbers() {
