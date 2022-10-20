@@ -17,7 +17,8 @@ class InsertionSort : public SortAlgorithm {
 				numbers[j + 1] = numbers[j];
 				j = j - 1;
 
-				checkStatus();
+				if (!checkStatus())
+					return;
 			}
 			numbers[j + 1] = key;
 		}
