@@ -1,9 +1,7 @@
 #ifndef MANAGER
 #define MANAGER
 
-#include "Algorithms/BubbleSort.h"
-#include "Algorithms/InsertionSort.h"
-#include "Algorithms/SelectionSort.h"
+#include "Algorithms/Includes.h"
 #include <chrono>
 #include <thread>
 
