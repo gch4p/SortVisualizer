@@ -7,11 +7,6 @@
 #include <random>
 #include <atomic>
 
-//struct cursorStats {
-//	std::atomic<unsigned> pos = 0;
-//	unsigned val = 0;
-//};
-
 class SortAlgorithm {
 protected:
 	std::vector<unsigned> numbers = {};
@@ -52,7 +47,6 @@ public:
 	virtual ~SortAlgorithm() = default;
 
 	void init() {
-
 		numbers.clear();
 		for (unsigned i = length; i > 0; --i)
 			numbers.push_back(i);
@@ -74,6 +68,7 @@ public:
 	}
 	
 	void shuffle() {
+		m_finished = false;
 		std::shuffle( numbers.begin(), numbers.end(), rng);
 	}
 
@@ -82,9 +77,9 @@ public:
 		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
 
-	//void setCursorPos(int& pos) {
-	//	cursor.pos = pos;
-	//}
+	bool isRunning() {
+		return m_running;
+	}
 
 	std::atomic<unsigned>* getCursorPos() {
 		return &cursorPos;

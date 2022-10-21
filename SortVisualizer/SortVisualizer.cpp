@@ -8,20 +8,24 @@ class MyApp : public App {
         //startup
     }
 
-	void update() override {
+    void update() override {
 
         numbers = Manager.Sorter->getNumbers();
         cursorPos = *Manager.Sorter->getCursorPos();
         cursorVal = (*numbers)[cursorPos];
-        
+
         const char* sorts[] = { "Bubble Sort","Insertion Sort" };
         ImGui::Combo("Sort", &currentSort, sorts, IM_ARRAYSIZE(sorts));
         if (currentSort != Manager.sortID)
             Manager.setSort(currentSort);
 
-        if (ImGui::Button("Start"))
-            Manager.startSort();
+        ImGui::BeginDisabled(Manager.Sorter->isRunning()); {
+            if (ImGui::Button("Start"))
+                Manager.startSort();
+        }
+        ImGui::EndDisabled();
         ImGui::SameLine();
+        
         if (ImGui::Button("Stop"))
             Manager.stopSort();
         ImGui::SameLine();

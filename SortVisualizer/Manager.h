@@ -16,7 +16,7 @@ public:
 	~MyManager() = default; 
 
 	void startSort() {
-		m_paused = 0;
+		m_running = 1;
 		Sorter->start();
 	}
 
@@ -25,18 +25,18 @@ public:
 	}
 
 	void doShuffle() {
-		m_paused = 1;
+		m_running = 0;
 		Sorter->stop();
 		Sorter->shuffle();
 	}
 
 	void stopSort() {
-		m_paused = 1;
+		m_running = 0;
 		Sorter->stop();
 	}
 
 	void setSort(int id) {
-		m_paused = 1;
+		m_running = 0;
 		sortID = id;
 		Sorter->stop();
 		switch (id) {
@@ -54,9 +54,9 @@ public:
 	SortAlgorithm* Sorter = nullptr;
 	int length = 100;
 	int sortID = 0;
+	bool m_running = 0;
 private:
 	int delay = 10; //ms
-	bool m_paused = 0;
 	//std::vector<unsigned>* numbers = nullptr;
 };
 
