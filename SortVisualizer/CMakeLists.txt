@@ -15,7 +15,7 @@ target_include_directories(SortVisualizer PUBLIC ${ALG_DIR})
 
 target_sources(SortVisualizer PRIVATE
 				${ALG_DIR}/BubbleSort.h
- "Algorithms/InsertionSort.h")
+ "Algorithms/InsertionSort.h" "Algorithms/SelectionSort.h")
 				
 
 #https://cmake.org/cmake/help/git-stage/manual/cmake-generator-expressions.7.html#genex:TARGET_RUNTIME_DLLS
