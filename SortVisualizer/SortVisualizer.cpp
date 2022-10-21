@@ -38,7 +38,8 @@ class MyApp : public App {
 
         float plotHeight = ImGui::GetWindowContentRegionMax().y - 80;
        
-        if (ImPlot::BeginPlot("##Plot", { -1,plotHeight }, ImPlotFlags_NoMenus | ImPlotFlags_NoMouseText )) {
+        if (ImPlot::BeginPlot("##Plot", { -1,plotHeight }, ImPlotFlags_CanvasOnly)) {
+            ImPlot::SetupAxes(nullptr, nullptr, ImPlotAxisFlags_NoDecorations, ImPlotAxisFlags_NoDecorations);
             ImPlot::PlotBars("Data", numbers->data(), Manager.length);
             ImPlot::PlotBars("Cursor", &cursorPos, &cursorVal, 1, 1.0);
             ImPlot::EndPlot();
