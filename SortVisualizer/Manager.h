@@ -7,51 +7,17 @@
 
 class MyManager {
 public:
-	MyManager() {
-		Sorter = new BubbleSort;
-		Sorter->init();
-		Sorter->shuffle();
-	}
+	MyManager();
 	~MyManager() = default; 
 
-	void startSort() {
-		m_running = 1;
-		Sorter->start();
-	}
+	std::vector<unsigned>* getData();
 
-	std::vector<unsigned>* getData() {
-		return Sorter->getNumbers();
-	}
+	void doShuffle();
 
-	void doShuffle() {
-		m_running = 0;
-		Sorter->stop();
-		Sorter->shuffle();
-	}
+	void startSort();
+	void stopSort();
 
-	void stopSort() {
-		m_running = 0;
-		Sorter->stop();
-	}
-
-	void setSort(int id) {
-		m_running = 0;
-		sortID = id;
-		Sorter->stop();
-		switch (id) {
-		case 0:
-			Sorter = new BubbleSort;
-			break;
-		case 1:
-			Sorter = new InsertionSort;
-			break;
-		case 2:
-			Sorter = new SelectionSort;
-			break;
-		}
-		Sorter->init();
-		Sorter->shuffle();
-	}
+	void setSort(int id);
 
 	SortAlgorithm* Sorter = nullptr;
 	int length = 100;
@@ -59,7 +25,6 @@ public:
 	bool m_running = 0;
 private:
 	int delay = 10; //ms
-	//std::vector<unsigned>* numbers = nullptr;
 };
 
 #endif
