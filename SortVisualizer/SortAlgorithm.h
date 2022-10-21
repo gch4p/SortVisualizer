@@ -29,7 +29,7 @@ protected:
 		return 1;
 	}
 
-	void setCursorPos(int pos, int offset) {
+	void setCursorPos(int pos, int offset = 0) {
 		if (pos - offset < 0)
 			offset = 0;
 		if (pos + offset > length)
