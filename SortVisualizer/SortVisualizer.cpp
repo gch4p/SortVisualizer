@@ -14,7 +14,7 @@ class MyApp : public App {
         cursorPos = *Manager.Sorter->getCursorPos();
         cursorVal = (*numbers)[cursorPos];
 
-        const char* sorts[] = { "Bubble Sort","Insertion Sort" };
+        const char* sorts[] = { "Bubble Sort","Insertion Sort","SelectionSort"};
         ImGui::PushItemWidth(130);
         ImGui::Combo("##", &currentSort, sorts, IM_ARRAYSIZE(sorts));
         ImGui::PopItemWidth;

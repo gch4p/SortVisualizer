@@ -3,6 +3,7 @@
 
 #include "Algorithms/BubbleSort.h"
 #include "Algorithms/InsertionSort.h"
+#include "Algorithms/SelectionSort.h"
 #include <chrono>
 #include <thread>
 
@@ -45,6 +46,9 @@ public:
 			break;
 		case 1:
 			Sorter = new InsertionSort;
+			break;
+		case 2:
+			Sorter = new SelectionSort;
 			break;
 		}
 		Sorter->init();

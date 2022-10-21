@@ -13,6 +13,8 @@ class SelectionSort : public SortAlgorithm {
 				if (numbers[j] < numbers[min_idx])
 					min_idx = j;
 
+				if (!checkStatus())
+					return;
 			}
 			if (min_idx != i)
 				std::swap(numbers[i], numbers[min_idx]);
