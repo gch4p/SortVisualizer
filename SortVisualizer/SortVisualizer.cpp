@@ -15,7 +15,10 @@ class MyApp : public App {
         cursorVal = (*numbers)[cursorPos];
 
         const char* sorts[] = { "Bubble Sort","Insertion Sort" };
-        ImGui::Combo("Sort", &currentSort, sorts, IM_ARRAYSIZE(sorts));
+        ImGui::PushItemWidth(130);
+        ImGui::Combo("##", &currentSort, sorts, IM_ARRAYSIZE(sorts));
+        ImGui::PopItemWidth;
+
         if (currentSort != Manager.sortID)
             Manager.setSort(currentSort);
 
