@@ -134,8 +134,11 @@ public:
 			ImGui_ImplSDL2_NewFrame();
 			ImGui::NewFrame();
 
-
+			ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f));
+			ImGui::SetNextWindowSize(ImGui::GetIO().DisplaySize);
+			ImGui::Begin("Visualizer", 0, ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoDecoration);
 			update();
+			ImGui::End();
 
 
 			// Rendering

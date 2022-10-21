@@ -27,11 +27,15 @@ class MyApp : public App {
         ImGui::SameLine();
         if (ImGui::Button("Shuffle"))
             Manager.doShuffle();
+        ImGui::Separator();
+
+        float plotHeight = ImGui::GetWindowContentRegionMax().y - 80;
        
-        ImPlot::BeginPlot("Bar Plot");
-        ImPlot::PlotBars("Vertical", numbers->data(), Manager.length);
-        ImPlot::PlotBars("Cursor", &cursorPos, &cursorVal, 1, 1.0);
-        ImPlot::EndPlot();
+        if (ImPlot::BeginPlot("##Plot", { -1,plotHeight }, ImPlotFlags_NoMenus | ImPlotFlags_NoMouseText )) {
+            ImPlot::PlotBars("Data", numbers->data(), Manager.length);
+            ImPlot::PlotBars("Cursor", &cursorPos, &cursorVal, 1, 1.0);
+            ImPlot::EndPlot();
+        }
 
 	}
 
