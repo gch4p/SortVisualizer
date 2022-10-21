@@ -16,11 +16,9 @@ class MyApp : public App {
 
         const char* sorts[] = { "Bubble Sort","Insertion Sort","SelectionSort"};
         ImGui::PushItemWidth(130);
-        ImGui::Combo("##", &currentSort, sorts, IM_ARRAYSIZE(sorts));
-        ImGui::PopItemWidth;
-
-        if (currentSort != Manager.sortID)
+        if (ImGui::Combo("##", &currentSort, sorts, IM_ARRAYSIZE(sorts)))
             Manager.setSort(currentSort);
+        ImGui::PopItemWidth;
 
         ImGui::BeginDisabled(Manager.Sorter->isRunning()); {
             if (ImGui::Button("Start"))
