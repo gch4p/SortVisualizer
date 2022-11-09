@@ -11,11 +11,11 @@ class SortAlgorithm {
 protected:
 	std::vector<unsigned> numbers = {};
 	unsigned length = 100;
-	std::atomic<bool> m_finished, m_running = false;
-	std::atomic<unsigned> cursorPos = 0;
+	std::atomic<bool> m_finished = false, m_running = false;
+	std::atomic<unsigned> cursorPos = 0,delay = 10;
 
 	std::thread sortThread;
-	int delay = 10; //ms
+	//int delay = 10; //ms
 
 	std::default_random_engine rng;
 
@@ -46,13 +46,14 @@ public:
 	SortAlgorithm() = default;
 	virtual ~SortAlgorithm() = default;
 
-	void init() {
+	void init(unsigned &del) {
+		delay = del;
 		numbers.clear();
 		for (unsigned i = length; i > 0; --i)
 			numbers.push_back(i);
 	}
 
-	void setDelay(int& del) {
+	void setDelay(unsigned& del) {
 		delay = del;
 	}
 

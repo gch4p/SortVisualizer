@@ -29,7 +29,12 @@ void MyApp::update() {
 	ImGui::SameLine();
 	if (ImGui::Button("Shuffle"))
 		Manager.doShuffle();
+	ImGui::SameLine();
+	if (ImGui::SliderInt("Delay", &delay, 0, 50))
+		Manager.setDelay(delay);
 	ImGui::Separator();
+
+
 
 	float plotHeight = ImGui::GetWindowContentRegionMax().y - 80;
 

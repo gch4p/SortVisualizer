@@ -13,6 +13,7 @@ private:
     MyManager Manager;
     unsigned cursorPos = 0;
     unsigned cursorVal = 0;
+    int delay = 10;
     int currentSort = 0;
 };
 
