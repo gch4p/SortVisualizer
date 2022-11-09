@@ -2,7 +2,7 @@
 
 MyManager::MyManager() {
 	Sorter = new BubbleSort;
-	Sorter->init();
+	Sorter->init(delay);
 	Sorter->shuffle();
 }
 
@@ -14,6 +14,11 @@ void MyManager::startSort() {
 void MyManager::stopSort() {
 	m_running = 0;
 	Sorter->stop();
+}
+
+void MyManager::setDelay(int del) {
+	delay = del;
+	Sorter->setDelay(delay);
 }
 
 std::vector<unsigned>* MyManager::getData() {
@@ -41,7 +46,7 @@ void MyManager::setSort(int id) {
 		Sorter = new SelectionSort;
 		break;
 	}
-	Sorter->init();
+	Sorter->init(delay);
 	Sorter->shuffle();
 }
 

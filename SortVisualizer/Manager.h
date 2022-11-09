@@ -17,6 +17,8 @@ public:
 	void startSort();
 	void stopSort();
 
+	void setDelay(int del);
+
 	void setSort(int id);
 
 	SortAlgorithm* Sorter = nullptr;
@@ -24,7 +26,7 @@ public:
 	int sortID = 0;
 	bool m_running = 0;
 private:
-	int delay = 10; //ms
+	unsigned delay = 10; //ms
 };
 
 #endif
