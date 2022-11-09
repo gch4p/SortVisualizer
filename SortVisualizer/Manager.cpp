@@ -45,6 +45,9 @@ void MyManager::setSort(int id) {
 	case 2:
 		Sorter = new SelectionSort;
 		break;
+	case 3: 
+		Sorter = new GnomeSort;
+		break;
 	}
 	Sorter->init(delay);
 	Sorter->shuffle();

@@ -11,7 +11,7 @@ void MyApp::update() {
 	cursorPos = *Manager.Sorter->getCursorPos();
 	cursorVal = (*numbers)[cursorPos];
 
-	const char* sorts[] = { "Bubble Sort","Insertion Sort","SelectionSort" };
+	const char* sorts[] = { "Bubble Sort","Insertion Sort","SelectionSort","GnomeSort"};
 	ImGui::PushItemWidth(130);
 	if (ImGui::Combo("##", &currentSort, sorts, IM_ARRAYSIZE(sorts)))
 		Manager.setSort(currentSort);

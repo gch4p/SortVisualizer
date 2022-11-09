@@ -4,5 +4,6 @@
 #include "BubbleSort.h"
 #include "InsertionSort.h"
 #include "SelectionSort.h"
+#include "GnomeSort.h"
 
 #endif
