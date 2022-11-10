@@ -21,7 +21,7 @@ void MyManager::setDelay(int del) {
 	Sorter->setDelay(delay);
 }
 
-std::vector<unsigned>* MyManager::getData() {
+std::vector<int>* MyManager::getData() {
 	return Sorter->getNumbers();
 }
 
@@ -47,6 +47,9 @@ void MyManager::setSort(int id) {
 		break;
 	case 3: 
 		Sorter = new GnomeSort;
+		break;
+	case 4:
+		Sorter = new PancakeSort;
 		break;
 	}
 	Sorter->init(delay);

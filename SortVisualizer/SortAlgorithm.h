@@ -9,7 +9,7 @@
 
 class SortAlgorithm {
 protected:
-	std::vector<unsigned> numbers = {};
+	std::vector<int> numbers = {};
 	unsigned length = 100;
 	std::atomic<bool> m_finished = false, m_running = false;
 	std::atomic<unsigned> cursorPos = 0,delay = 10;
@@ -49,7 +49,7 @@ public:
 	void init(unsigned &del) {
 		delay = del;
 		numbers.clear();
-		for (unsigned i = length; i > 0; --i)
+		for (int i = length; i > 0; --i)
 			numbers.push_back(i);
 	}
 
@@ -86,7 +86,7 @@ public:
 		return &cursorPos;
 	}
 
-	std::vector<unsigned>* getNumbers() {
+	std::vector<int>* getNumbers() {
 		return &numbers;
 	}
 };
