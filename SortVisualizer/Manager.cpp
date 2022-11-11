@@ -51,6 +51,9 @@ void MyManager::setSort(int id) {
 	case 4:
 		Sorter = new PancakeSort;
 		break;
+	case 5:
+		Sorter = new CocktailSort;
+		break;
 	}
 	Sorter->init(delay);
 	Sorter->shuffle();
