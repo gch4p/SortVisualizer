@@ -9,7 +9,7 @@ class MyApp : public App {
     void update() override;
 
 private:
-    const std::vector<unsigned>* numbers = nullptr;
+    const std::vector<int>* numbers = nullptr;
     MyManager Manager;
     unsigned cursorPos = 0;
     unsigned cursorVal = 0;

@@ -10,7 +10,7 @@ public:
 	MyManager();
 	~MyManager() = default; 
 
-	std::vector<unsigned>* getData();
+	std::vector<int>* getData();
 
 	void doShuffle();
 

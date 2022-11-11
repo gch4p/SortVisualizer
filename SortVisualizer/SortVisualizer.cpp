@@ -11,7 +11,7 @@ void MyApp::update() {
 	cursorPos = *Manager.Sorter->getCursorPos();
 	cursorVal = (*numbers)[cursorPos];
 
-	const char* sorts[] = { "Bubble Sort","Insertion Sort","SelectionSort" };
+	const char* sorts[] = { "Bubble Sort","Insertion Sort","Selection Sort","Gnome Sort","Pancake Sort","Cocktail Sort"};
 	ImGui::PushItemWidth(130);
 	if (ImGui::Combo("##", &currentSort, sorts, IM_ARRAYSIZE(sorts)))
 		Manager.setSort(currentSort);
@@ -30,11 +30,9 @@ void MyApp::update() {
 	if (ImGui::Button("Shuffle"))
 		Manager.doShuffle();
 	ImGui::SameLine();
-	if (ImGui::SliderInt("Delay", &delay, 0, 50))
+	if (ImGui::SliderInt("Delay", &delay, 1, 50))
 		Manager.setDelay(delay);
 	ImGui::Separator();
-
-
 
 	float plotHeight = ImGui::GetWindowContentRegionMax().y - 80;
 
