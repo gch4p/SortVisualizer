@@ -39,6 +39,8 @@ class CocktailSort : public SortAlgorithm {
 					swapped = true;
 				}
 			}
+
+			++start;
 		}
 	}
 };
