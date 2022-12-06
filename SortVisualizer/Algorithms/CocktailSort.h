@@ -30,7 +30,7 @@ class CocktailSort : public SortAlgorithm {
 			--len;
 
 			for (int i = len - 1; i >= start; --i) {
-				setCursorPos(i);
+				setCursorPos(i,1);
 				if (!checkStatus())
 					return;
 

@@ -30,7 +30,7 @@ void MyApp::update() {
 	if (ImGui::Button("Shuffle"))
 		Manager.doShuffle();
 	ImGui::SameLine();
-	if (ImGui::SliderInt("Delay", &delay, 1, 50))
+	if (ImGui::SliderInt("Delay (ms)", &delay, 1, 50))
 		Manager.setDelay(delay);
 	ImGui::Separator();
 
